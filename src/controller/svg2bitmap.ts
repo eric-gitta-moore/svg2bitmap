@@ -26,7 +26,11 @@ export const instanceConf: { cluster: Cluster<IPlaywrightData> | null; maxConcur
     console.log(`queue task opening ${url} with locator ${locator}`);
     await (html ? page.setContent(html) : page.goto(url));
     const pageItem = locator ? page.locator(locator) : page;
-    const screen = await pageItem.screenshot({ animations: 'disabled', type: 'jpeg' });
+    const screen = await pageItem.screenshot({
+      animations: 'disabled',
+      type: 'jpeg',
+      fullPage: true,
+    });
     return screen;
   });
   console.log(`setup playwright cluster task successfully`);
