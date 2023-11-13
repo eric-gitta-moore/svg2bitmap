@@ -5,9 +5,10 @@
   "private": true,
   "packageManager": "pnpm@18.18.0",
   "scripts": {
-    "dev": "nodemon ./src/app.ts",
-    "build": "webpack",
-    "start:prod": "npm run build && node dist/index.js",
+    "dev": "nodemon src/app.ts",
+    "build": "rimraf dist && webpack",
+    "start": "node dist/main.js",
+    "start:prod": "npm run build && node dist/main.js",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -27,16 +28,22 @@
     "lint-staged": "^15.0.2",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "webpackbar": "^5.0.2"
   },
   "dependencies": {
     "express": "^4.18.2",
     "playwright": "^1.39.0",
     "playwright-cluster": "^1.0.6"
+  },
+  "peerDependencies": {
+    "playwright-core": "^1.39.0"
   }
 }

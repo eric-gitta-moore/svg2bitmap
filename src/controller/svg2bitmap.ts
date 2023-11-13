@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
 import { Cluster } from 'playwright-cluster';
-import { exec } from 'node:child_process';
-import { TaskFunction } from 'playwright-cluster/dist/Cluster';
 
 export interface IPlaywrightData {
   url?: string;
