@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
 import { Cluster } from 'playwright-cluster';
+import { exec } from 'node:child_process';
+import { TaskFunction } from 'playwright-cluster/dist/Cluster';
 
 export interface IPlaywrightData {
-  url: string;
+  url?: string;
   html?: string;
   locator?: string;
 }
@@ -23,8 +25,8 @@ export const instanceConf: { cluster: Cluster<IPlaywrightData> | null; maxConcur
   });
   console.log(`starting ${instanceConf.maxConcurrency} instance playwright cluster successfully`);
   await instanceConf.cluster.task(async ({ page, data: { url, html, locator } }) => {
-    console.log(`queue task opening ${url} with locator ${locator}`);
-    await (html ? page.setContent(html) : page.goto(url));
+    console.log(`queue task opening ${url ? url : 'html content'} with locator ${locator}`);
+    await (html ? page.setContent(html) : page.goto(url!));
     const pageItem = locator ? page.locator(locator) : page;
     const screen = await pageItem.screenshot({
       animations: 'disabled',
@@ -38,18 +40,19 @@ export const instanceConf: { cluster: Cluster<IPlaywrightData> | null; maxConcur
 
 export async function svg2bitmap(req: Request<IPlaywrightData>, res: Response) {
   const params = Object.assign({}, req.query, req.params, req.body);
-  if (!params?.url) {
+  if (!params?.url && !params?.html) {
     return res.end(`Please specify url like this: ?url=example.com`);
   }
   if (!instanceConf.cluster) {
     return res.end('Cluster init...');
   }
   try {
-    const screen = await instanceConf.cluster.execute({
-      url: params.url,
-      html: params?.html,
+    const execData: IPlaywrightData = {
       locator: params?.locator,
-    });
+    };
+    if (params.url) execData.url = params.url;
+    else if (params.html) execData.html = decodeURIComponent(params.html);
+    const screen = await instanceConf.cluster.execute(execData);
 
     // respond with image
     res.writeHead(200, {
