@@ -1,7 +1,7 @@
-from playwright/chrome:playwright-1.39.0
-env workdir=/data/app
-workdir ${workdir}
-user root
-copy . /data/app
-run npm i -g pnpm yarn
+FROM playwright/chrome:playwright-1.39.0
+ENV workdir=/data/app
+WORKDIR ${workdir}
+USER root
+COPY . /data/app
+RUN npm i -g pnpm yarn
 ENTRYPOINT pnpm run start
