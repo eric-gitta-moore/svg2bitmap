@@ -7,8 +7,9 @@
   "scripts": {
     "dev": "nodemon src/app.ts",
     "build": "rimraf dist && webpack",
-    "start": "node dist/main.js",
+    "start": "ts-node src/app.ts",
     "start:prod": "npm run build && node dist/main.js",
+    "setup": "pnpm i && npx playwright install chrome",
     "prepare": "husky install"
   },
   "devDependencies": {
