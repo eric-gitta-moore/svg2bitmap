@@ -1,5 +1,5 @@
-const path = require('node:path')
-const WebpackBarPlugin = require('webpackbar')
+const path = require('node:path');
+const WebpackBarPlugin = require('webpackbar');
 
 /**
  * @type {import('webpack').Configuration}
@@ -20,9 +20,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', 'json', '.tsx', '.ts'],
-    alias: {
-      'playwright-core': path.resolve(__dirname, './packages/utilities/shims/blankDependency.js'),
-    },
   },
   plugins: [new WebpackBarPlugin()],
 };
