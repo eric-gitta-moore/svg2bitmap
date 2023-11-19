@@ -3,5 +3,5 @@ ENV workdir=/data/app
 WORKDIR ${workdir}
 USER root
 COPY . /data/app
-RUN npm i -g pnpm yarn
+RUN npm config set registry https://registry.npmmirror.com && npm i -g pnpm yarn
 ENTRYPOINT pnpm run start
