@@ -1,7 +1,5 @@
 # svg2bitmap
 
-example: http://localhost:3000/svg2bitmap?url=http%3A%2F%2Flocalhost%3A4200%2Fhome%3Fwidth%3D1400%26height%3D600&locator=//ngx-charts-chart
-
 docker: `docker pull jamescurtisfoxmail/svg2bitmap`
 
 ## start
@@ -9,4 +7,20 @@ docker: `docker pull jamescurtisfoxmail/svg2bitmap`
 pnpm i
 pnpm run setup
 pnpm run start
+```
+
+## usage
+url: http://localhost:3000/svg2bitmap
+body:
+```ts
+export interface ApiParam {
+  url?: string;
+  html?: string;
+  locator?: string;
+}
+
+const example: ApiParam = {
+  url: 'http://localhost:4000/home',
+  locator:'//app-hoc' // xpath or css selector
+};
 ```
