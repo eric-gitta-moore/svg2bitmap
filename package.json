@@ -17,7 +17,9 @@
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
     "@types/express": "^4.17.20",
+    "@types/lint-staged": "^13.2.2",
     "@types/node": "^20.8.10",
+    "@types/npmlog": "^4.1.6",
     "@types/webpack": "^5.28.4",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
@@ -42,6 +44,7 @@
   },
   "dependencies": {
     "express": "^4.18.2",
+    "npmlog": "^7.0.1",
     "playwright": "^1.39.0",
     "playwright-cluster": "^1.0.6"
   },

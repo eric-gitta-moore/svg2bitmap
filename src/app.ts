@@ -1,4 +1,5 @@
 import express from 'express';
+import log from './util/logger';
 import setupRoute from './route';
 
 const app = express();
@@ -9,5 +10,5 @@ app.use(express.json());
 setupRoute({ app });
 
 app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
+  log.info('app', `app listening on port ${port}`);
 });

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { Cluster } from 'playwright-cluster';
+import log from '../util/logger';
 
 export interface IPlaywrightData {
   url?: string;
@@ -13,7 +14,7 @@ export const instanceConf: { cluster: Cluster<IPlaywrightData> | null; maxConcur
 };
 
 (async () => {
-  console.log(`starting playwright cluster...`);
+  log.info('svg2bitmap', `starting playwright cluster...`);
   instanceConf.cluster = await Cluster.launch({
     concurrency: Cluster.CONCURRENCY_PAGE,
     maxConcurrency: instanceConf.maxConcurrency,
@@ -21,9 +22,15 @@ export const instanceConf: { cluster: Cluster<IPlaywrightData> | null; maxConcur
       javaScriptEnabled: false,
     },
   });
-  console.log(`starting ${instanceConf.maxConcurrency} instance playwright cluster successfully`);
+  log.info(
+    'svg2bitmap',
+    `starting ${instanceConf.maxConcurrency} instance playwright cluster successfully`,
+  );
   await instanceConf.cluster.task(async ({ page, data: { url, html, locator } }) => {
-    console.log(`queue task opening ${url ? url : 'html content'} with locator ${locator}`);
+    log.info(
+      'svg2bitmap',
+      `queue task opening ${url ? url : 'html content'} with locator ${locator}`,
+    );
     await (html ? page.setContent(html) : page.goto(url!));
     const pageItem = locator ? page.locator(locator) : page;
     const screen = await pageItem.screenshot({
@@ -33,7 +40,7 @@ export const instanceConf: { cluster: Cluster<IPlaywrightData> | null; maxConcur
     });
     return screen;
   });
-  console.log(`setup playwright cluster task successfully`);
+  log.info('svg2bitmap', `setup playwright cluster task successfully`);
 })();
 
 export async function svg2bitmap(req: Request<IPlaywrightData>, res: Response) {
