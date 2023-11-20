@@ -1,4 +1,5 @@
 FROM playwright/chrome:playwright-1.39.0
+ARG CI=true
 ENV workdir=/data/app
 WORKDIR ${workdir}
 USER root
