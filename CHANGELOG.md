@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/james-curtis/svg2bitmap/compare/v0.1.3...v0.1.4) (2023-11-21)
+
+
+### Bug Fixes
+
+* chrome launch fail ([8935785](https://github.com/james-curtis/svg2bitmap/commit/8935785ca88ef6b7fa61a423c304bdba52e1ab65))
+
 ## [0.1.3](https://github.com/james-curtis/svg2bitmap/compare/v0.1.2...v0.1.3) (2023-11-21)
 
 
