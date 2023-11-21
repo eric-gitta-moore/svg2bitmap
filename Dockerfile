@@ -9,6 +9,7 @@ RUN npx webpack --config webpack.config.prod.ts
 
 
 FROM playwright/chrome:playwright-1.39.0 AS prod
+ARG CI=true
 ENV workdir=/app NODE_ENV=production
 WORKDIR ${workdir}
 USER root
