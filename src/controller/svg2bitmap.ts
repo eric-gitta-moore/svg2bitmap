@@ -10,7 +10,7 @@ export interface IPlaywrightData {
 
 export const instanceConf: { cluster: Cluster<IPlaywrightData> | null; maxConcurrency: number } = {
   cluster: null,
-  maxConcurrency: 5,
+  maxConcurrency: Number(process.env.maxConcurrency) || 5,
 };
 
 (async () => {
