@@ -6,9 +6,7 @@
   "packageManager": "pnpm@18.18.0",
   "scripts": {
     "dev": "nodemon src/app.ts",
-    "build": "rimraf dist && webpack",
     "start": "ts-node src/app.ts",
-    "start:prod": "npm run build && node dist/main.js",
     "setup": "pnpm i && npx playwright install chrome",
     "build:docker": "docker build -t svg2bitmap .",
     "prepare": "husky install"
