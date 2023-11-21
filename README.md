@@ -3,6 +3,10 @@
 docker: `docker pull jamescurtisfoxmail/svg2bitmap`
 
 ## start
+**env**
+- maxConcurrency # ClusterOptions.playwright
+  - default: 5
+
 ```shell
 pnpm i
 pnpm run setup
