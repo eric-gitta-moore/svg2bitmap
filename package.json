@@ -3,13 +3,16 @@
   "version": "0.1.2",
   "description": "",
   "private": true,
-  "packageManager": "pnpm@18.18.0",
+  "packageManager": "pnpm@8.10.5",
   "scripts": {
+    "serve": "export `cat .env | grep -v \"^#\"` && nodemon dist/main.js",
+    "serve:build": "rimraf dist && cross-env NODE_ENV=development webpack watch --config webpack.config.dev.ts",
+    "build:prod": "rimraf dist && cross-env NODE_ENV=production webpack --config webpack.config.prod.ts",
     "dev": "nodemon src/app.ts",
     "start": "ts-node src/app.ts",
     "setup": "pnpm i && npx playwright install chrome",
     "build:docker": "docker build -t svg2bitmap .",
-    "prepare": "husky install"
+    "prepare": "npx husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.8.1",
@@ -20,12 +23,13 @@
     "@types/node": "^20.8.10",
     "@types/npmlog": "^4.1.6",
     "@types/webpack": "^5.28.4",
+    "@types/webpack-node-externals": "^3.0.4",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-define-config": "^1.24.1",
+    "eslint-define-config": "2.0.0",
     "husky": "^8.0.3",
     "jsonc-eslint-parser": "^2.2.0",
     "lint-staged": "^15.0.2",
@@ -35,7 +39,12 @@
     "ts-loader": "^9.5.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.10.0",
+    "webpack-node-externals": "^3.0.0",
+    "webpackbar": "^5.0.2"
   },
   "dependencies": {
     "express": "^4.18.2",
