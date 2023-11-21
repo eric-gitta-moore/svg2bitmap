@@ -12,13 +12,13 @@ dependencies:
     specifier: ^7.0.1
     version: 7.0.1
   playwright:
-    specifier: ^1.39.0
+    specifier: 1.39.0
     version: 1.39.0
   playwright-cluster:
     specifier: ^1.0.6
     version: 1.0.6
   playwright-core:
-    specifier: ^1.39.0
+    specifier: 1.39.0
     version: 1.39.0
 
 devDependencies:

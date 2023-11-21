@@ -15,6 +15,7 @@ WORKDIR ${workdir}
 USER root
 COPY --from=builder /app/dist/ ./dist
 COPY package.json .
+COPY pnpm-lock.yaml .
 RUN npm config set registry https://registry.npmmirror.com && npm i -g pnpm yarn
 RUN pnpm i
 EXPOSE 3000
