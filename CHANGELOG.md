@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3](https://github.com/james-curtis/svg2bitmap/compare/v0.1.2...v0.1.3) (2023-11-21)
+
+
+### Bug Fixes
+
+* setup webpack ([f38695c](https://github.com/james-curtis/svg2bitmap/commit/f38695c9e0b75c42adc36c0761ae819f4f492d9f))
+* setup webpack ([fe142cb](https://github.com/james-curtis/svg2bitmap/commit/fe142cb3ffd53b980d237e6ebc4469cf53729b3f))
+
 ## [0.1.2](https://github.com/james-curtis/svg2bitmap/compare/v0.1.1...v0.1.2) (2023-11-21)
 
 
