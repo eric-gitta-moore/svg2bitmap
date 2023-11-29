@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/james-curtis/svg2bitmap/compare/v0.1.4...v0.1.5) (2023-11-29)
+
+
+### Bug Fixes
+
+* json limit ([287527c](https://github.com/james-curtis/svg2bitmap/commit/287527cae2a3f76a621ac5323efcbf5603c148e0))
+
 ## [0.1.4](https://github.com/james-curtis/svg2bitmap/compare/v0.1.3...v0.1.4) (2023-11-21)
 
 
