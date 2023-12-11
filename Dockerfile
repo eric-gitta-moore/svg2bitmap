@@ -20,4 +20,4 @@ RUN npm config set registry https://registry.npmmirror.com && npm i -g pnpm yarn
 RUN pnpm i
 EXPOSE 3000
 HEALTHCHECK CMD curl http://localhost:3000 -f || exit 1
-ENTRYPOINT node ./dist/main.js
+ENTRYPOINT npm run start:prod
